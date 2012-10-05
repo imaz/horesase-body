@@ -20,6 +20,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'haml', '>= 3.1.4'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'erb2haml'

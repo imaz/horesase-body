@@ -44,7 +44,7 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    haml (3.1.3)
+    haml (3.1.7)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
@@ -119,6 +119,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   erb2haml
+  haml (>= 3.1.4)
   haml-rails
   jquery-rails
   rails (= 3.2.8)
