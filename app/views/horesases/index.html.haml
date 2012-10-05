@@ -1,0 +1,21 @@
+%h1 Listing horesases
+
+%table
+  %tr
+    %th Id
+    %th Body
+    %th
+    %th
+    %th
+
+  - @horesases.each do |horesase|
+    %tr
+      %td= horesase.id
+      %td= horesase.body
+      %td= link_to 'Show', horesase
+      %td= link_to 'Edit', edit_horesase_path(horesase)
+      %td= link_to 'Destroy', horesase, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Horesase', new_horesase_path

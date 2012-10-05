@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Id:
+  = @horesase.id
+%p
+  %b Body:
+  = @horesase.body
+
+= link_to 'Edit', edit_horesase_path(@horesase)
+\|
+= link_to 'Back', horesases_path
