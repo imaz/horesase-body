@@ -6,7 +6,8 @@
       %td= boy['id']
       %td
         %img{:src => boy['image']}
-      %td= simple_format(boy["body"])
+      %td
+        %textarea.horesase-body{"data-id" => boy["id"]}= boy["body"]
 %br
 
 = link_to 'New Horesase', new_horesase_path
