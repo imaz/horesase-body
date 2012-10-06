@@ -19,7 +19,8 @@
     horesases = $.map(
       $('.horesase-body'),
       function(horesase_body){
-        return {id: $(horesase_body).data('id'), body: horesase_body.value};
+        if(horesase_body.value != "")
+          return {id: $(horesase_body).data('id'), body: horesase_body.value};
       }
     );
   });
