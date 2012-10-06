@@ -5,8 +5,7 @@
     %tr
       %td
         %img{:src => boy['image']}
-      %td
-        %textarea{:style => "width:260px;height:100px"}= boy["body"]
+      %td= simple_format(boy["body"])
 %br
 
 = link_to 'New Horesase', new_horesase_path
