@@ -1,13 +1,15 @@
 %h1 Listing horesases
 
-%table
-  - @horesase_boys.each do |boy|
-    %tr
-      %td= boy['id']
-      %td
-        %img{:src => boy['image']}
-      %td
-        %textarea.horesase-body{"data-id" => boy["id"]}= boy["body"]
+= form_tag('/horesases', :method => :post) do
+  %table
+    - @horesase_boys.each do |boy|
+      %tr
+        %td= boy['id']
+        %td
+          %img{:src => boy['image']}
+        %td
+          %textarea.horesase-body{'data-id' => boy['id']}= boy['body']
+  %input#submit{:type => 'submit', :value => 'Save'}
 %br
 
 = link_to 'New Horesase', new_horesase_path
