@@ -3,7 +3,7 @@ class HoresasesController < ApplicationController
   # GET /horesases.json
   def index
     @horesases = Horesase.all
-    @horesase_boys = JSON.parse(`curl https://raw.github.com/june29/horesase-boys/master/meigens.json`)
+    @horesase_boys = JSON.parse(`curl http://cloud.github.com/downloads/june29/horesase-boys/meigens.json`)
 
     respond_to do |format|
       format.html # index.html.erb
