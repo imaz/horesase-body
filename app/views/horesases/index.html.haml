@@ -3,6 +3,7 @@
 %table
   - @horesase_boys.each do |boy|
     %tr
+      %td= boy['id']
       %td
         %img{:src => boy['image']}
       %td= simple_format(boy["body"])
