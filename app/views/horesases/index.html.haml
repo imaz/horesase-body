@@ -15,12 +15,16 @@
 = link_to 'New Horesase', new_horesase_path
 
 :javascript
-  $('#save').click(function(){
-    horesases = $.map(
+  var make_save_data = function(){
+    var horesases = $.map(
       $('.horesase-body'),
       function(horesase_body){
         if(horesase_body.value != "")
           return {id: $(horesase_body).data('id'), body: horesase_body.value};
       }
     );
+    return horesases;
+  };
+  $('#save').click(function(){
+    horesases = make_save_data();
   });

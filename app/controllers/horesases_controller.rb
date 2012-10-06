@@ -41,7 +41,9 @@ class HoresasesController < ApplicationController
   # POST /horesases
   # POST /horesases.json
   def create
-    @horesase = Horesase.new(params[:horesase])
+    puts params
+=begin
+    @horesase = Horesase.find_or_create_by_id(params[:id])
 
     respond_to do |format|
       if @horesase.save
@@ -52,6 +54,7 @@ class HoresasesController < ApplicationController
         format.json { render json: @horesase.errors, status: :unprocessable_entity }
       end
     end
+=end
   end
 
   # PUT /horesases/1
