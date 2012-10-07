@@ -18,4 +18,9 @@ end
 desc "Build #{BODY_DIR}/*.txt"
 task :build => :environment do
   horesases = Horesase.all
+  horesases.each do |horesase|
+    body_path = BODY_DIR + "#{horesase.id}.txt"
+    File.open(body_path, 'w')
+    File.write(body_path, horesase.body)
+  end
 end
