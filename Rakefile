@@ -21,7 +21,7 @@ task :build => :environment do
   horesases.each do |horesase|
     body_path = BODY_DIR + "#{horesase.id}.txt"
     File.open(body_path, 'w') do |f|
-      f.write(horesase.body)
+      f.write(horesase.body + "\n")
     end
   end
 end
