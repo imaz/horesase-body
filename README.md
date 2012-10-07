@@ -1,3 +1,3 @@
 # 惚れさせポスト
 
-[https://github.com/june29/horesase-boys/](惚れさせ男子データベース)の本文作成用アプリです。
+[惚れさせ男子データベース](https://github.com/june29/horesase-boys/)の本文作成用アプリです。
