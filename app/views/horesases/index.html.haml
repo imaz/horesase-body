@@ -1,12 +1,42 @@
 %h1 Listing horesases
 
-%table
-  - @horesase_boys.each do |boy|
-    %tr
-      %td= boy['id']
-      %td
-        %img{:src => boy['image']}
-      %td= simple_format(boy["body"])
+%form
+  %table
+    - @horesase_boys.each do |boy|
+      %tr
+        %td= boy['id']
+        %td
+          %img{:src => boy['image']}
+        %td
+          %textarea.horesase-body{'data-id' => boy['id']}= boy['body']
+  %input#save{:type => 'button', :value => 'Save'}
 %br
 
 = link_to 'New Horesase', new_horesase_path
+
+:javascript
+  var make_save_data = function(){
+    var horesases = $.map(
+      $('.horesase-body'),
+      function(horesase_body){
+        if(horesase_body.value != "")
+          return {id: $(horesase_body).data('id'), body: horesase_body.value};
+      }
+    );
+    return horesases;
+  };
+  $('#save').click(function(){
+    var horesases = make_save_data();
+    $.ajax({
+      type: 'POST',
+      url: '/horesases',
+      data: {horesases: horesases},
+      dataType: 'json',
+      success: function(data){
+        alert('Saveした');
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert('Saveできなかった');
+      }
+    });
+  });
