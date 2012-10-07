@@ -14,19 +14,21 @@ class HoresasesController < ApplicationController
   # POST /horesases
   # POST /horesases.json
   def create
-    puts params
-=begin
-    @horesase = Horesase.find_or_create_by_id(params[:id])
-
-    respond_to do |format|
-      if @horesase.save
-        format.html { redirect_to @horesase, notice: 'Horesase was successfully created.' }
-        format.json { render json: @horesase, status: :created, location: @horesase }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @horesase.errors, status: :unprocessable_entity }
+    Horesase.transaction do
+      params[:horesases].each do |_,data|
+        @horesase = Horesase.find_or_create_by_id(data["id"])
+        @horesase.body = data["body"]
+        @horesase.save
       end
     end
-=end
+
+    respond_to do |format|
+      format.json { render json: @horesase, status: :created, location: @horesase }
+    end
+
+    rescue => e
+    respond_to do |format|
+      format.json { render json: @horesase.errors, status: :unprocessable_entity }
+    end
   end
 end

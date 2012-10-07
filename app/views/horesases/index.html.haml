@@ -26,5 +26,16 @@
     return horesases;
   };
   $('#save').click(function(){
-    horesases = make_save_data();
+    var horesases = make_save_data();
+    $.ajax({
+      type: 'POST',
+      url: '/horesases',
+      data: {horesases: horesases},
+      dataType: 'json',
+      success: function(data){
+        alert('Saveした');
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        alert('Saveできなかった');
+      }
   });
