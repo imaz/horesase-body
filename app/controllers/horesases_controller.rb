@@ -1,9 +1,11 @@
+require 'net/http'
+
 class HoresasesController < ApplicationController
   # GET /horesases
   # GET /horesases.json
   def index
     @horesases = Horesase.all
-    @horesase_boys = JSON.parse(`curl http://cloud.github.com/downloads/june29/horesase-boys/meigens.json`)
+    @horesase_boys = JSON.parse(fetch_meigens)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,5 +32,10 @@ class HoresasesController < ApplicationController
     respond_to do |format|
       format.json { render json: @horesase.errors, status: :unprocessable_entity }
     end
+  end
+
+  private
+  def fetch_meigens
+    Net::HTTP.get(URI.parse('http://cloud.github.com/downloads/june29/horesase-boys/meigens.json'))
   end
 end
