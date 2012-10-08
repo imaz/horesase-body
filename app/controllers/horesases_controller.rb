@@ -1,6 +1,8 @@
 require 'net/http'
 
 class HoresasesController < ApplicationController
+  MEIGENS_URL = 'http://cloud.github.com/downloads/june29/horesase-boys/meigens.json'
+
   # GET /horesases
   # GET /horesases.json
   def index
@@ -35,7 +37,8 @@ class HoresasesController < ApplicationController
   end
 
   private
+
   def fetch_meigens
-    Net::HTTP.get(URI.parse('http://cloud.github.com/downloads/june29/horesase-boys/meigens.json'))
+    Net::HTTP.get(URI.parse(MEIGENS_URL))
   end
 end
