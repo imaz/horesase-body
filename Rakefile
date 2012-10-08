@@ -5,5 +5,3 @@
 require File.expand_path('../config/application', __FILE__)
 
 HoresaseBody::Application.load_tasks
-
-task :default => :build
