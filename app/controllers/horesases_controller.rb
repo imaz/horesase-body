@@ -7,7 +7,7 @@ class HoresasesController < ApplicationController
   # GET /horesases.json
   def index
     @horesases = Horesase.all
-    @horesase_boys = JSON.parse(fetch_meigens)
+    @horesase_boys = Kaminari.paginate_array(JSON.parse(fetch_meigens)).page(params[:page]).per(50)
 
     respond_to do |format|
       format.html # index.html.erb

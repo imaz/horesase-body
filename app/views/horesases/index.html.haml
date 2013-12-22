@@ -1,5 +1,8 @@
 %h1 Listing meigens.json
 
+= paginate @horesase_boys
+%br
+
 %form
   %table
     - @horesase_boys.each do |boy|
@@ -10,8 +13,11 @@
         %td
           %textarea.horesase-body{'data-id' => boy['id']}= boy['body']
   %input#save{:type => 'button', :value => 'Save'}
-%br
 
+%br
+= paginate @horesase_boys
+
+%br
 = link_to 'New Horesase', new_horesase_path
 
 :javascript
