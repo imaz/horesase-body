@@ -1,6 +1,7 @@
 require 'net/http'
 
 class HoresasesController < ApplicationController
+  LOCAL_MEIGENS_PATH = '../horesase-boys/dist/meigens.json'
   MEIGENS_URL = 'http://horesase-boys.herokuapp.com/meigens.json'
 
   # GET /horesases
@@ -39,6 +40,10 @@ class HoresasesController < ApplicationController
   private
 
   def fetch_meigens
-    Net::HTTP.get(URI.parse(MEIGENS_URL))
+    if File.exist?(LOCAL_MEIGENS_PATH)
+      File.open(LOCAL_MEIGENS_PATH).read
+    else
+      Net::HTTP.get(URI.parse(MEIGENS_URL))
+    end
   end
 end
