@@ -1,7 +1,7 @@
 require 'net/http'
 
 class HoresasesController < ApplicationController
-  MEIGENS_URL = 'http://cloud.github.com/downloads/june29/horesase-boys/meigens.json'
+  MEIGENS_URL = 'http://horesase-boys.herokuapp.com/meigens.json'
 
   # GET /horesases
   # GET /horesases.json
